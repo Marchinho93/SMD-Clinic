@@ -3,6 +3,8 @@ package model;
 import java.util.List;
 import java.util.Map;
 
+import model.money.Money;
+
 public class ExamTypology {
 	private long code;
 	private String name;
