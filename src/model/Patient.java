@@ -1,8 +1,7 @@
 package model;
 
 import java.util.Date;
-import java.util.Map;
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,8 +29,7 @@ public class Patient {
 	@Column(nullable = false)
 	private String address;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name = "patient_id")
-	private Map<Long, Exam> exams;
+	private List<Exam> exams;
 	
 	public Patient(String name, String surname, Date dateOfBirth, String address) {
 		this.name = name;
@@ -76,10 +73,10 @@ public class Patient {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Map<Long, Exam> getExams() {
+	public List<Exam> getExams() {
 		return exams;
 	}
-	public void setExams(Map<Long, Exam> exams) {
-		this.exams = exams;
+	public void setExams(List<Exam> exams2) {
+		this.exams = exams2;
 	}
 }

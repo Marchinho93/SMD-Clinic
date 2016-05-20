@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Map;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ public class Doctor {
 	private String surname;
 	private String fieldOfSpecialization;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	private Map<Long, Exam> exams;
+	private List<Exam> exams;
 
 	public Doctor(String name, String surname, String fieldOfSpecialization) {
 		this.name = name;
@@ -63,11 +63,11 @@ public class Doctor {
 		this.fieldOfSpecialization = fieldOfSpecialization;
 	}
 
-	public Map<Long, Exam> getExams() {
+	public List<Exam> getExams() {
 		return exams;
 	}
 
-	public void setExams(Map<Long, Exam> exams) {
+	public void setExams(List<Exam> exams) {
 		this.exams = exams;
 	}
 }

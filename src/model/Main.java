@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 import model.money.Euro;
 
-public class main {
+public class Main {
 	
 	public static void main(String[] args){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("models-unit");
@@ -33,10 +33,17 @@ public class main {
 		Prerequisite pre1 = new Prerequisite("NM", "Non Morto");
 		List<Prerequisite> pres = new ArrayList<>();
 		pres.add(pre1);
+		examType.setPrerequisites(pres);
 		
 		Date date2 = new Date();
 		Date date3 = new Date(90, 10, 3);
 		Exam exam1 = new Exam(date3, patient1, doctor1, examType);
+		List<Exam> exams = new ArrayList<>();
+		exams.add(exam1);
+		System.out.println("where the fuck am i:"+exam1.getCode());
+		examType.setExams(exams);
+		doctor1.setExams(exams);
+		patient1.setExams(exams);
 		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

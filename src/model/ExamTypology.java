@@ -1,8 +1,6 @@
 package model;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +12,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
-
-import model.money.Money;
 
 @Entity
 public class ExamTypology {
@@ -30,7 +26,7 @@ public class ExamTypology {
 	@Column(nullable = false)
 	private List<ResultIndicator> resultIndicators;
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private Map<Long, Exam> exams;
+	private List<Exam> exams;
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Prerequisite> prerequisites;
 	
@@ -65,11 +61,11 @@ public class ExamTypology {
 	public void setResultIndicators(List<ResultIndicator> resultIndicators) {
 		this.resultIndicators = resultIndicators;
 	}
-	public Map<Long, Exam> getExams() {
+	public List<Exam> getExams() {
 		return exams;
 	}
-	public void setExams(Map<Long, Exam> exams) {
-		this.exams = exams;
+	public void setExams(List<Exam> exams2) {
+		this.exams = exams2;
 	}
 	public long getCode() {
 		return code;
