@@ -24,16 +24,12 @@ public class Exam {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long code;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
-	@Column(nullable = false)
 	private Patient patient;
 	@OneToOne(cascade = {CascadeType.PERSIST})
-	@Column(nullable = false)
 	private Result result;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
-	@Column(nullable = false)
 	private Doctor doctor;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
-	@Column(nullable = false)
 	private ExamTypology examTypology;
 	
 	public Exam(Date examDate, Patient patient, Doctor doctor, ExamTypology examTypology) {

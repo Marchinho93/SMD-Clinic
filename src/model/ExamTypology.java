@@ -25,7 +25,7 @@ public class ExamTypology {
 	@Column(nullable =false)
 	private String name;
 	private String description;
-	private Money price;
+	private String price;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	@Column(nullable = false)
 	private List<ResultIndicator> resultIndicators;
@@ -34,7 +34,7 @@ public class ExamTypology {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Prerequisite> prerequisites;
 	
-	public ExamTypology(String name, String description, Money price, List<ResultIndicator> resultIndicators) {
+	public ExamTypology(String name, String description, String price, List<ResultIndicator> resultIndicators) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -53,10 +53,10 @@ public class ExamTypology {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Money getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(Money price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public List<ResultIndicator> getResultIndicators() {
