@@ -1,7 +1,14 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Prerequisite {
+	@Id
 	private String name;
+	@Column(nullable = false)
 	private String description;
 	
 	public Prerequisite(String name, String description) {
