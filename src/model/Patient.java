@@ -3,14 +3,35 @@ package model;
 import java.util.Date;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+@Entity
 public class Patient {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long code;
+	@Column(nullable = true)
 	private String password;
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private String surname;
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
+	@Column(nullable = false)
 	private String address;
-	
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "patient_id")
 	private Map<Long, Exam> exams;
 	
 	public Patient(String name, String surname, Date dateOfBirth, String address) {
