@@ -3,15 +3,17 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Administrator {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long code;
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	private String code;
 	@Column(nullable=true, length=30)
 	private String password;
 	@Column(nullable=false, length=20)
@@ -22,6 +24,13 @@ public class Administrator {
 	public Administrator(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public String getPassword() {
 		return password;

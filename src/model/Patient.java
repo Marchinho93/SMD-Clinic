@@ -7,16 +7,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Patient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long code;
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	private String code;
 	@Column(nullable = true)
 	private String password;
 	@Column(nullable = false)
@@ -37,10 +39,10 @@ public class Patient {
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 	}
-	public long getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getPassword() {
