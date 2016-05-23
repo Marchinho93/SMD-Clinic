@@ -11,12 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Doctor {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long code;
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private String code;
 	@Column(nullable=false, length = 20)
 	private String name;
 	@Column(nullable=false, length = 20)
@@ -31,11 +34,11 @@ public class Doctor {
 		this.fieldOfSpecialization = fieldOfSpecialization;
 	}
 
-	public long getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
