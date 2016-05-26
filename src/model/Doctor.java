@@ -7,18 +7,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(sequenceName = "doctorSeq", name = "doctorSeq", initialValue = 20000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "Doctor.findAll", query = "SELECT a FROM Doctor a")
+})
 public class Doctor {
 	
 	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private String code;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doctorSeq")
+	private long code;
 	@Column(nullable=false, length = 20)
 	private String name;
 	@Column(nullable=false, length = 20)
@@ -33,11 +38,11 @@ public class Doctor {
 		this.fieldOfSpecialization = fieldOfSpecialization;
 	}
 
-	public String getCode() {
+	public long getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 

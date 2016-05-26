@@ -8,11 +8,30 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J - Postgres"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MVC"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA">
+		<attributes>
+			<attribute name="owner.project.facets" value="#system#;jst.jsf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J - Postgres">
+		<attributes>
+			<attribute name="owner.project.facets" value="#system#;jst.jsf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MVC">
+		<attributes>
+			<attribute name="owner.project.facets" value="#system#;jst.jsf"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hybernate"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/web"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/apache-tomee-webprofile-1.7.4/lib/ejb-3_0-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EJB">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="jst.jsf"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

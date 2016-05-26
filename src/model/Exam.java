@@ -9,11 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@SequenceGenerator(sequenceName = "examSeq", name = "examSeq", initialValue=40000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "Exam.findAll", query = "SELECT e FROM Exam e"),
+	@NamedQuery(name = "Exam.findByPatient", query = "SELECT e FROM Exam e WHERE e.patient.code = :patient_code"),
+	@NamedQuery(name = "Exam.findByDoctor", query = "SELECT e FROM Exam e WHERE e.doctor.code = :doctor_code")
+})
 public class Exam {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date bookingDate;
@@ -21,7 +30,7 @@ public class Exam {
 	@Column(nullable = false)
 	private Date examDate;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "examSeq")
 	private long code;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
 	private Patient patient;
@@ -87,4 +96,15 @@ public class Exam {
 	public void setExamTypology(ExamTypology examTypology) {
 		this.examTypology = examTypology;
 	}
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+		this.result.setExam(this);
+	}
+	
+	
 }

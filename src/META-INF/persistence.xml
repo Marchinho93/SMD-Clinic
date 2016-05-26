@@ -21,8 +21,8 @@
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="crypt.HiddenDriver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="C1j5NqXAZU0GVdMGZWKg9A==" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://52.39.205.210:5432/SMDClinic" />
+			<property name="javax.persistence.jdbc.password" value="vGNj7Lvd+n2IpNe35YIP1A==" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/products" />
 
 		<!-- Hibernate properties -->
 	        		<property name="hibernate.show_sql" value="true" />

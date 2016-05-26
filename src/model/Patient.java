@@ -7,18 +7,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.GenericGenerator;
 @Entity
+@SequenceGenerator(sequenceName = "patientSeq", name = "patientSeq", initialValue = 30000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "Patient.findAll", query = "SELECT p FROM Patient p")
+})
 public class Patient {
 	@Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
-	private String code;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="patientSeq")
+	private long code;
 	@Column(nullable = true)
 	private String password;
 	@Column(nullable = false)
@@ -39,10 +45,10 @@ public class Patient {
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 	}
-	public String getCode() {
+	public long getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 	public String getPassword() {

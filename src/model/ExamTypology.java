@@ -9,14 +9,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-
-
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(sequenceName = "examTypologySeq", name = "examTypologySeq", initialValue = 50000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "ExamTypology.findAll", query = "SELECT e FROM ExamTypology e")
+})
 public class ExamTypology {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "examTypologySeq")
 	private long code;
 	@Column(nullable =false)
 	private String name;
@@ -30,11 +35,12 @@ public class ExamTypology {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Prerequisite> prerequisites;
 	
-	public ExamTypology(String name, String description, String price, List<ResultIndicator> resultIndicators) {
+	public ExamTypology(String name, String description, String price, List<ResultIndicator> resultIndicators, List<Prerequisite> prerequisites) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.resultIndicators = resultIndicators;
+		this.prerequisites = prerequisites;
 	}
 	
 	public String getName() {

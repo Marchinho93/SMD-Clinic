@@ -8,19 +8,24 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator (sequenceName = "resultSeq", name = "resultSeq", initialValue = 60000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "Result.findAll", query = "SELECT r FROM Result r")
+})
 public class Result {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultSeq")
 	private long code;
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "result_code")
+	@OneToMany(mappedBy = "pk.result", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	private List<ResultRow> resultsRows;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Exam exam;
 	
 	public Result(List<ResultRow> resultsRows, Exam exam) {
@@ -28,6 +33,10 @@ public class Result {
 		this.exam = exam;
 	}
 	
+	public Result(Exam exam) {
+		this.exam = exam;
+	}
+
 	public long getCode() {
 		return code;
 	}

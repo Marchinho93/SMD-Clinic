@@ -3,17 +3,22 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(sequenceName = "administratorSeq", name = "administratorSeq", initialValue=10000, allocationSize = 1)
+@NamedQueries({
+	@NamedQuery(name = "Administrator.findAll", query = "SELECT a FROM Administrator a")
+})
 public class Administrator {
 	
 	@Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
-	private String code;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="administratorSeq")
+	private long code;
 	@Column(nullable=true, length=30)
 	private String password;
 	@Column(nullable=false, length=20)
@@ -26,10 +31,10 @@ public class Administrator {
 		this.surname = surname;
 	}
 	
-	public String getCode() {
+	public long getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 	public String getPassword() {
