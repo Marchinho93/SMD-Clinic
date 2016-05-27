@@ -19,16 +19,17 @@
 		<class>model.result.ResultRow</class>
 		<class>model.SMDClinic</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="crypt.HiddenDriver" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="vGNj7Lvd+n2IpNe35YIP1A==" />
+			<property name="javax.persistence.jdbc.password" value="k" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/products" />
 
 		<!-- Hibernate properties -->
 	        		<property name="hibernate.show_sql" value="true" />
-            		<property name="hibernate.format_sql" value="true" />
+            		<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			
+	<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" />-->
 		</properties>
 	</persistence-unit>
 </persistence>

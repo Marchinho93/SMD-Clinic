@@ -11,16 +11,14 @@ public class AdministratorFacade {
 	EntityManager em;
 	
 	@PersistenceContext(unitName = "models-unit")
-	public Administrator createAdministrator(String name, String surname, String password){
-		Administrator administrator = new Administrator(name, surname);
-		administrator.setPassword(password);
+	public Administrator createAdministrator(String username, String name, String surname, String password){
+		Administrator administrator = new Administrator(username, name, surname, password);
 		em.persist(administrator);
 		return administrator;
 	}
 	
-	public Administrator findByCode(String code){
-		Administrator administrator = em.find(Administrator.class, code);
-		return administrator;
+	public Administrator findByUsername(String username){
+		return (Administrator) em.createNamedQuery("Administrator.findByUsername", Administrator.class).setParameter("username", username).getSingleResult();
 	}
 	
 	public List<Administrator> findAll(){

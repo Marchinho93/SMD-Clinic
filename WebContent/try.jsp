@@ -26,13 +26,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+	<script src="js/app/navbar.js"></script>
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
+  <body ng-app = "navbar">
     <div class="navbar-wrapper">
       <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -46,9 +47,9 @@
               </button>
               <a class="navbar-brand" href="#">SMDClinic</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div id="navbar" ng-controller="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><div ng-click="navClick.click"><a href="">Home</a></div></li>
                 <li class="hover"><a href="#TheClinic">The Clinic</a></li>
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-menuid="1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
@@ -67,14 +68,14 @@
 	                <li class="dropdown">
 	                <a href='#' class="dropdown-toggle" data-menuid="navig" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
 	              		<div id="navig" class="dropdown-menu">
-	              			<form role="form" class="form container-fluid">
+	              			<form role="form" class="form container-fluid" action="login" method="POST">
 	              				<div align="center" class="form-group">
 	              					<label for="user">Username:</label>
-	              					<input type="text" class="form-control input-sm" id="user" required>
+	              					<input type="text" class="form-control input-sm" id="user" name="username" required>
 	              				</div>
 	              				<div align="center" class="form-group">
 	              					<label for="password">Password:</label>
-	              					<input type="password" class="form-control input-sm" id="password" required>
+	              					<input type="password" class="form-control input-sm" id="password" name="password" required>
 	              				</div>
 	              				<li role="separator" class="divider"></li>
 	              				<button type="submit" class="btn btn-default">Enter</button>
@@ -92,7 +93,7 @@
 
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" ng-show="carousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

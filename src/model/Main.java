@@ -18,8 +18,7 @@ public class Main {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("models-unit");
 		EntityManager em = emf.createEntityManager();
 		
-		Administrator admin = new Administrator("Davide", "Cassetta");
-		admin.setPassword("password");
+		Administrator admin = new Administrator("davCass","Davide", "Cassetta", "password");
 		
 		Doctor doctor1 = new Doctor("Simone", "Fioroni", "Cardiologia");
 		
@@ -70,8 +69,13 @@ public class Main {
 		exam1.setResult(res1);
 		exam2.setResult(res2);		
 		tx.commit();
+		
+		System.out.println(((Administrator) em.createNamedQuery("Administrator.findByUsername", Administrator.class).setParameter("username", "davCass").getSingleResult()).getName());
 		em.close();
 		emf.close();
+
+		
+		
 	}
 
 }
