@@ -20,10 +20,7 @@ public class LoginAction {
 		emf.close();
 		if(administrator!=null){
 			HttpSession session = request.getSession();
-			session.setAttribute("username",administrator.getName());
-			session.setAttribute("name",administrator.getName());
-			session.setAttribute("surname",administrator.getSurname());
-			session.setAttribute("code",administrator.getCode());
+			session.setAttribute("admin", administrator);
 			return "";
 		}
 		return "";

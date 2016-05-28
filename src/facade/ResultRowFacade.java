@@ -1,10 +1,14 @@
-package model;
+package facade;
 
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import model.Result;
+import model.ResultIndicator;
+import model.ResultRow;
 
 @Stateless(name = "ResultRowFacade")
 public class ResultRowFacade {

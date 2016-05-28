@@ -1,14 +1,10 @@
 package model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -20,7 +16,6 @@ import javax.persistence.SequenceGenerator;
 	@NamedQuery(name = "Administrator.findAll", query = "SELECT a FROM Administrator a")
 })
 public class Administrator {
-	private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="administratorSeq")
 	private long code;
 	@Id

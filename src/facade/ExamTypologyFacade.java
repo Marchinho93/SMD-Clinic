@@ -1,10 +1,14 @@
-package model;
+package facade;
 
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import model.ExamTypology;
+import model.Prerequisite;
+import model.ResultIndicator;
 
 @Stateless(name = "examTypologyFacade")
 public class ExamTypologyFacade {

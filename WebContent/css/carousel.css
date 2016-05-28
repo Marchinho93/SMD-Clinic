@@ -60,6 +60,38 @@ body {
   height: 500px;
 }
 
+.carouselAnimUp{
+	-webkit-animation: carUp 1s 1;
+	animation: carUp 1s 1;
+}
+
+@-webkit-keyframes carUp{
+	From{height: 500px;}
+	To{height: 50px; opacity:0}
+}
+@keyframes carUp{
+	From{height: 500px;}
+	To{height: 50px; opacity:0}
+}
+	
+.carouselAnimDown{
+	-webkit-animation: carDown 1s 1;
+	animation: carDown 1s 1;
+}
+
+@-webkit-keyframes carDown{
+	From{height: 50px;opacity:0}
+	To{height: 500px;opacity:100}
+}
+@keyframes carDown{
+	From{height: 50px;opacity:0}
+	To{height: 500px;opacity:100}
+}
+
+.notVisible{
+	opacity:0;
+	height:50px;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -82,7 +114,7 @@ body {
 ------------------------- */
 
 .featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+  margin: 0px 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -132,3 +164,5 @@ body {
     margin-top: 120px;
   }
 }
+
+	

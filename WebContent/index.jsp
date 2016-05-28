@@ -1,3 +1,17 @@
+<%@ page import="model.*" %>
+<% Administrator admin = (Administrator) session.getAttribute("admin");
+/*if(session.getAttribute("loginSucceed")	!= null){
+		return;
+	}
+	else if(session.getAttribute("loginError") !=null){
+	   	out.clear();
+		RequestDispatcher rd = application.getRequestDispatcher("/fallimento.jsp");
+	    rd.forward(request, response);
+	}
+	return;*/
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,19 +35,24 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
 
+    <link rel="prerender" href="home.html">
+    <link rel="prefetch" href="home.html">
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  	<!-- navbar and carousel behaviour -->
 	<script src="js/app/navbar.js"></script>
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body ng-app = "navbar">
+  <body ng-app = "navbar"  style="background-color:#e6e6e6">
     <div class="navbar-wrapper">
       <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -45,28 +64,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">SMDClinic</a>
+              <div class="navbar-brand" >SMDClinic</div>
             </div>
-            <div id="navbar" ng-controller="navbar" class="navbar-collapse collapse">
+            <div id="navbar" ng-controller="navbarC" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><div ng-click="navClick.click"><a href="">Home</a></div></li>
-                <li class="hover"><a href="#TheClinic">The Clinic</a></li>
+                <li  ng-class="{'active':urlActive === 'home'}"><a href="" ng-click="update('home');">Home</a></li>
+                <li  ng-class="{'active':urlActive === 'theClinic'}"><a href="" ng-click="update('theClinic');">The Clinic</a></li>
                 <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-menuid="1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                <a href="" class="dropdown-toggle" data-menuid="1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
                 <ul id="1" class="dropdown-menu">
-                  <li><a href="#">Exams</a></li>
-                  <li><a href="#">Doctors</a></li>
+                  <li ng-class="{'active':urlActive === 'exams'}"><a href="" ng-click="update('exams');">Exams</a></li>
+                  <li ng-class="{'active':urlActive === 'doctors'}"><a href="" ng-click="update('doctors');">Doctors</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Our patients</li>
-                  <li><a href="#">Feedbacks</a></li>
+                  <li ng-class="{'active':urlActive === 'feedbacks'}"><a href="" ng-click="update('feedbacks');">Feedbacks</a></li>
                 </ul>
                 </li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li  ng-class="{'active':urlActive === 'contacts'}"><a href="" ng-click="update('contacts');">Contacts</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
 	                <li class="dropdown">
-	                <a href='#' class="dropdown-toggle" data-menuid="navig" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
+	                <a href='' class="dropdown-toggle" data-menuid="navig" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><% if(admin!=null) out.print("Hello, "+ admin.getName()); else out.print("Login"); %><span class="caret"></span></a>
 	              		<div id="navig" class="dropdown-menu">
 	              			<form role="form" class="form container-fluid" action="login" method="POST">
 	              				<div align="center" class="form-group">
@@ -93,7 +111,7 @@
 
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" ng-show="carousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" ng-model="carousel" class="carousel slide carouselAnimDown" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -147,92 +165,29 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+    <div id="HTMLContainer" class="container marketing">
 
 
-      <!-- START THE FEATURETTES -->
 
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <!-- /END THE FEATURETTES -->
 
 
       <!-- FOOTER -->
-      <footer>
+     
+
+    </div><!-- /.container -->
+ 	<footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
-    </div><!-- /.container -->
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+   <!-- <script src="js/ie10-viewport-bug-workaround.js"></script>-->
+   <script src="js/holder.min.js"></script>
   </body>
 </html>

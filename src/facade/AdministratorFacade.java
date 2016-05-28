@@ -1,10 +1,12 @@
-package model;
+package facade;
 
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import model.Administrator;
 
 @Stateless(name="administratorFacade")
 public class AdministratorFacade {

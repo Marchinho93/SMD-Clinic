@@ -10,6 +10,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MVC"/>
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/apache-tomee-webprofile-1.7.4/lib/ejb-3_0-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EJB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PostgresSQL"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

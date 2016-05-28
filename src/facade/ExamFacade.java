@@ -1,4 +1,4 @@
-package model;
+package facade;
 
 import java.util.Date;
 import java.util.List;
@@ -6,6 +6,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import model.Doctor;
+import model.Exam;
+import model.ExamTypology;
+import model.Patient;
 
 @Stateless(name="examFacade")
 public class ExamFacade {
