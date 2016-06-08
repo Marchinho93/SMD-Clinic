@@ -12,9 +12,9 @@ import model.ResultRow;
 
 @Stateless(name = "ResultRowFacade")
 public class ResultRowFacade {
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public ResultRow crearePrerequisite(long id, String value, ResultIndicator resultIndicator, Result result){
 		ResultRow resultRow = new ResultRow(id, value, resultIndicator, result);
 		em.persist(resultRow);

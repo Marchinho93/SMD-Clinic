@@ -8,10 +8,25 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MVC"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EJB"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J2"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PostgresSQL"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MVC">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.jsf;#system#"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EJB">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.jsf;#system#"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J - Postgres"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/hibernate-commons-annotations-4.0.2.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/hibernate-core-4.2.21.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/hibernate-entitymanager-4.2.21.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brami/Desktop/Nuova cartella/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

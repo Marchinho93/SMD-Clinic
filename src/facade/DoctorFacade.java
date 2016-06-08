@@ -10,9 +10,10 @@ import model.Doctor;
 
 @Stateless(name = "doctorFacade")
 public class DoctorFacade {
+
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public Doctor createDoctor(String name, String surname, String fieldOfSpecialization){
 		Doctor doctor = new Doctor(name, surname, fieldOfSpecialization);
 		em.persist(doctor);

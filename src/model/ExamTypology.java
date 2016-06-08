@@ -15,6 +15,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @SequenceGenerator(sequenceName = "examTypologySeq", name = "examTypologySeq", initialValue = 50000, allocationSize = 1)
 @NamedQueries({
@@ -29,7 +32,7 @@ public class ExamTypology {
 	private String description;
 	private String price;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-	@Column(nullable = false)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ResultIndicator> resultIndicators;
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Exam> exams;
@@ -44,6 +47,9 @@ public class ExamTypology {
 		this.prerequisites = prerequisites;
 	}
 	
+	public ExamTypology() {
+	}
+
 	public String getName() {
 		return name;
 	}

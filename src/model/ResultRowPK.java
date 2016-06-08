@@ -18,6 +18,9 @@ public class ResultRowPK implements Serializable{
 		this.id = id;
 		this.result = result;
 	}
+	
+	public ResultRowPK(){
+	}
 
 	public long getId() {
 		return id;

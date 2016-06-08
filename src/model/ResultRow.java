@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "ResultRow.findAll", query = "SELECT rr FROM ResultRow rr")
@@ -31,6 +32,9 @@ public class ResultRow implements Serializable{
 		this.description = description;
 	}
 
+	public ResultRow(){
+	}
+	
 	public long getId() {
 		return this.pk.getId();
 	}

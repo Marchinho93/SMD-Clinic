@@ -11,7 +11,16 @@ html {
 }
 
 body {
-	margin: 0
+	background-color:#e6e6e6;
+	margin: 0;
+	animation: containerOpacityUp 1s 1
+}
+
+.body-leaving{
+	background-color:#e6e6e6;
+	margin: 0;
+	opacity: 0;
+	animation: containerOpacityDown 1s 1
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
@@ -2866,7 +2875,7 @@ legend {
 label {
 	display: inline-block;
 	max-width: 100%;
-	margin-bottom: 5px;
+	text-align:right;
 	font-weight: 700
 }
 
@@ -3880,6 +3889,32 @@ tbody.collapse.in {
 	left: 0;
 	z-index: 1000;
 	display: none;
+	float: left;
+	min-width: 300px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	-webkit-animation: appear 1s 1; /* opening animation */
+    animation: appear 1s 1
+    
+}
+/* for other type of drop */
+.dropdown-menu-visible {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: block;
 	float: left;
 	min-width: 300px;
 	padding: 5px 0;

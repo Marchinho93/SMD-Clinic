@@ -10,9 +10,9 @@ import model.Prerequisite;
 
 @Stateless(name = "PrerequisiteFacade")
 public class PrerequisiteFacade {
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public Prerequisite crearePrerequisite(String name, String description){
 		Prerequisite prerequisite = new Prerequisite(name, description);
 		em.persist(prerequisite);

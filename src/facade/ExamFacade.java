@@ -14,9 +14,9 @@ import model.Patient;
 
 @Stateless(name="examFacade")
 public class ExamFacade {
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public Exam createExam(Date examDate, Patient patient, Doctor doctor, ExamTypology examTypology){
 		Exam exam = new Exam(examDate, patient, doctor, examTypology);
 		em.persist(exam);

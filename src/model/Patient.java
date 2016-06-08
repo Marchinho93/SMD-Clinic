@@ -17,15 +17,21 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @SequenceGenerator(sequenceName = "patientSeq", name = "patientSeq", initialValue = 30000, allocationSize = 1)
 @NamedQueries({
-	@NamedQuery(name = "Patient.findAll", query = "SELECT p FROM Patient p")
+	@NamedQuery(name = "Patient.findAll", query = "SELECT p FROM Patient p"),
+	@NamedQuery(name = "Patient.findByUsername", query = "SELECT p FROM Patient p WHERE username=:username"),
 })
+
 public class Patient {
-	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="patientSeq")
 	private long code;
+	@Id
+	private String username;
 	@Column(nullable = true)
 	private String password;
 	@Column(nullable = false)
@@ -38,14 +44,21 @@ public class Patient {
 	@Column(nullable = false)
 	private String address;
 	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Exam> exams;
 	
-	public Patient(String name, String surname, Date dateOfBirth, String address) {
+	public Patient(String username, String name, String surname, Date dateOfBirth, String address, String password) {
+		this.username = username;
 		this.name = name;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
+		this.password = password;
 	}
+	
+	public Patient() {
+	}
+
 	public long getCode() {
 		return code;
 	}
@@ -87,5 +100,11 @@ public class Patient {
 	}
 	public void setExams(List<Exam> exams2) {
 		this.exams = exams2;
+	}
+	public String getUsername() {
+		return this.username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

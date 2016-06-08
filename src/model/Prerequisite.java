@@ -16,6 +16,9 @@ public class Prerequisite {
 		this.description = description;
 	}
 	
+	public Prerequisite() {
+	}
+
 	public String getName() {
 		return name;
 	}

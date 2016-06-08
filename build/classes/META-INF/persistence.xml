@@ -3,7 +3,9 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
-	<persistence-unit name="models-unit" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="models-unit" transaction-type="JTA">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<jta-data-source>PostgreSQL Database</jta-data-source>
 		<class>model.Administrator</class>
 		<class>model.Doctor</class>
 		<class>model.Exam</class>
@@ -14,22 +16,16 @@
 		<class>model.money.Sterling</class>
 		<class>model.Patient</class>
 		<class>model.Prerequisite</class>
-		<class>model.result.Result</class>
-		<class>model.result.ResultIndicator</class>
-		<class>model.result.ResultRow</class>
-		<class>model.SMDClinic</class>
+		<class>model.Result</class>
+		<class>model.ResultIndicator</class>
+		<class>model.ResultRow</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgres" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/SMDClinic" />
-
 		<!-- Hibernate properties -->
 	        		<property name="hibernate.show_sql" value="true" />
             		<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			
-	<!-- 	<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+		<!-- <property name="hibernate.hbm2ddl.auto" value="create" />-->
+			<property name="hibernate.id.new_generator_mappings" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>

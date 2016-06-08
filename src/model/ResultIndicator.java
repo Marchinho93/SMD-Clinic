@@ -12,6 +12,9 @@ public class ResultIndicator {
 		this.description = description;
 	}
 	
+	public ResultIndicator() {
+	}
+
 	public String getDescription() {
 		return description;
 	}

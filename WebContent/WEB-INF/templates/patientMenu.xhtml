@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div align="left" class="form-group">
+		<table>
+			<tr>
+				<td><label for="patientCode">Code:</label></td>
+				<td><h:outputText id="patientCode"
+						value="#{loginController.patient.code}" /></td>
+			</tr>
+			<tr>
+				<td><label for="patientName">Name:</label></td>
+				<td><h:outputText id="patientName"
+						value="#{loginController.patient.name}" /></td>
+			</tr>
+			<tr>
+				<td><label for="patientSurname">Surname:</label></td>
+				<td><h:outputText id="patientSurname"
+						value="#{loginController.patient.surname}" /></td>
+			</tr>
+			<tr>
+				<td><label for="patientDateOfBirth">Date Of Birth:</label></td>
+				<td><h:outputText id="patientDateOfBirth"
+						value="#{loginController.patient.dateOfBirth}" /></td>
+			</tr>
+			<tr>
+				<td><label for="patientAddress">Surname:</label></td>
+				<td><h:outputText id="patientAddress"
+						value="#{loginController.patient.surname}" /></td>
+			</tr>
+		</table>
+		<ul class="dropdown-menu-visible">
+			<li ng-class="{'active':urlActive === 'viewExams'}"><a href=""
+				ng-click="update('viewExams');">View Exams</a></li>
+		</ul>
+	</div>
+</ui:composition>

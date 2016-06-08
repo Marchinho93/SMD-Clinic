@@ -11,9 +11,9 @@ import model.Result;
 
 @Stateless(name = "ResultFacade")
 public class ResultFacade {
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public Result crearePrerequisite(Exam exam){
 		Result result = new Result(exam);
 		em.persist(result);

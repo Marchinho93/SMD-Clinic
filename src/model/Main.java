@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.money.Euro;
 
@@ -22,7 +23,7 @@ public class Main {
 		Doctor doctor1 = new Doctor("Simone", "Fioroni", "Cardiologia");
 		
 		Date date1 = new Date(70, 11, 1);
-		Patient patient1  = new Patient("Ajeje", "Brazorf", date1, "Via dei cani esplosi 8");
+		Patient patient1  = new Patient("ajeje", "Ajeje", "Brazorf", date1, "Via dei cani esplosi 8", "allahbestia");
 		
 		List<ResultIndicator> resInds = new ArrayList<>();
 		ResultIndicator emo = new ResultIndicator("Emoglobina");
@@ -70,8 +71,18 @@ public class Main {
 		tx.commit();
 		
 		System.out.println(((Administrator) em.createNamedQuery("Administrator.findByUsername", Administrator.class).setParameter("username", "davCass").getSingleResult()).getName());
+		TypedQuery<Administrator> query = em.createNamedQuery("Administrator.findByUsername", Administrator.class); 
+		query.setParameter("username", "davCass");
+		System.out.println(query.getParameterValue("username"));
+		List<Administrator> result = query.getResultList();
+		if(result.isEmpty()) System.out.println("null");
+		if(result.size()==1) System.out.println(result.get(0).getName());
+		if(result.size()>1) System.out.println(result.get(0));
+		
 		em.close();
 		emf.close();
+		
+		
 
 		
 	}

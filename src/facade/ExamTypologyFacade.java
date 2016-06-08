@@ -12,9 +12,9 @@ import model.ResultIndicator;
 
 @Stateless(name = "examTypologyFacade")
 public class ExamTypologyFacade {
+	@PersistenceContext(unitName = "models-unit")
 	EntityManager em;
 	
-	@PersistenceContext(unitName = "models-unit")
 	public ExamTypology createExamTypology(String name, String description,String price, List<ResultIndicator> resultIndicators, List<Prerequisite> prerequisites){
 		ExamTypology examTypology = new ExamTypology(name, description, price, resultIndicators, prerequisites);
 		em.persist(examTypology);

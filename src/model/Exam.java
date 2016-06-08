@@ -49,6 +49,9 @@ public class Exam {
 		this.examTypology = examTypology;
 	}
 
+	public Exam() {
+	}
+
 	public Date getBookingDate() {
 		return bookingDate;
 	}

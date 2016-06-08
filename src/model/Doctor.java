@@ -38,6 +38,9 @@ public class Doctor {
 		this.fieldOfSpecialization = fieldOfSpecialization;
 	}
 
+	public Doctor() {
+	}
+
 	public long getCode() {
 		return code;
 	}

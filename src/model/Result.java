@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @SequenceGenerator (sequenceName = "resultSeq", name = "resultSeq", initialValue = 60000, allocationSize = 1)
 @NamedQueries({
@@ -24,6 +27,7 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultSeq")
 	private long code;
 	@OneToMany(mappedBy = "pk.result", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<ResultRow> resultsRows;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Exam exam;
@@ -35,6 +39,9 @@ public class Result {
 	
 	public Result(Exam exam) {
 		this.exam = exam;
+	}
+	
+	public Result(){
 	}
 
 	public long getCode() {
